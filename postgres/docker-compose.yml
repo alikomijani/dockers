@@ -1,0 +1,20 @@
+version: '3'
+services:
+  psql:
+    image: postgres:alpine
+    container_name: postgres
+    restart: always
+    ports:
+      - 127.0.0.1:5432:5432
+    environment:
+      - POSTGRES_PASSWORD=PASSWORD
+      - POSTGRES_USER=root
+      - POSTGRES_DB=cdp
+    volumes:
+      - ./data/:/var/lib/postgresql/data
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
